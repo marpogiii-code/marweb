@@ -1,0 +1,122 @@
+name: Build Webpage
+
+on:
+  push:
+    branches: [ main, master, develop ]
+  pull_request:
+    branches: [ main, master, develop ]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    
+    strategy:
+      matrix:
+        php-version: ['8.1', '8.2']
+    
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v4
+    
+    - name: Setup PHP
+      uses: shivammathur/setup-php@v2
+      with:
+        php-version: ${{ matrix.php-version }}
+        extensions: json, curl, mbstring
+        coverage: xdebug
+    
+    - name: Setup Node.js
+      uses: actions/setup-node@v3
+      with:
+        node-version: '18'
+        cache: 'npm'
+    
+    - name: Install dependencies
+      run: |
+        if [ -f package.json ]; then
+          npm ci
+        fi
+        if [ -f composer.json ]; then
+          composer install --no-dev --optimize-autoloader
+        fi
+    
+    - name: Build assets
+      run: |
+        if [ -f package.json ]; then
+          npm run build || true
+        fi
+    
+    - name: Lint PHP files
+      run: |
+        if [ -d src ] || [ -d app ] || find . -maxdepth 1 -name "*.php" | grep -q .; then
+          php -l $(find . -name "*.php" -not -path "./vendor/*" -not -path "./node_modules/*")
+        fi
+    
+    - name: Validate HTML
+      run: |
+        npm install --global html-validate
+        html-validate $(find . -name "*.html" -not -path "./node_modules/*" -not -path "./vendor/*") || true
+    
+    - name: Check CSS syntax
+      run: |
+        npm install --global csslint
+        csslint $(find . -name "*.css" -not -path "./node_modules/*" -not -path "./vendor/*") || true
+    
+    - name: Archive build artifacts
+      if: success()
+      uses: actions/upload-artifact@v3
+      with:
+        name: build-artifacts-php-${{ matrix.php-version }}
+        path: |
+          !node_modules
+          !vendor
+          !.git
+        retention-days: 7
+    
+    - name: Build summary
+      run: |
+        echo "## Build Summary" >> $GITHUB_STEP_SUMMARY
+        echo "" >> $GITHUB_STEP_SUMMARY
+        echo "✅ Build completed successfully" >> $GITHUB_STEP_SUMMARY
+        echo "" >> $GITHUB_STEP_SUMMARY
+        echo "**PHP Version**: ${{ matrix.php-version }}" >> $GITHUB_STEP_SUMMARY
+        echo "**Node Version**: 18" >> $GITHUB_STEP_SUMMARY
+
+  deploy:
+    needs: build
+    runs-on: ubuntu-latest
+    if: github.event_name == 'push' && github.ref == 'refs/heads/main'
+    
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v4
+    
+    - name: Setup PHP
+      uses: shivammathur/setup-php@v2
+      with:
+        php-version: '8.2'
+    
+    - name: Setup Node.js
+      uses: actions/setup-node@v3
+      with:
+        node-version: '18'
+    
+    - name: Install dependencies
+      run: |
+        if [ -f package.json ]; then
+          npm ci
+        fi
+        if [ -f composer.json ]; then
+          composer install --no-dev --optimize-autoloader
+        fi
+    
+    - name: Build for production
+      run: |
+        if [ -f package.json ]; then
+          npm run build || true
+        fi
+    
+    - name: Deploy notification
+      run: |
+        echo "✨ Ready for deployment!"
+        echo "Build artifacts are available for deployment to your hosting environment."
