@@ -1,0 +1,233 @@
+<?php
+/**
+ * Front Page Template
+ *
+ * @package Marpogi_Rapper
+ */
+
+get_header();
+
+$hero_subtitle = get_theme_mod( 'hero_subtitle', 'Artist / Rapper / Producer' );
+$hero_tagline  = get_theme_mod( 'hero_tagline', 'Bringing raw energy and authentic bars. Music that hits different.' );
+$about_text    = get_theme_mod( 'about_text', 'Hey, I\'m Marpogi—an artist from California just starting out on my music journey. I dropped my first single this year, but honestly, making music means a lot more to me than just chasing streams.' );
+$soundcloud    = get_theme_mod( 'soundcloud_url', 'https://soundcloud.com/marpogi23' );
+$instagram     = get_theme_mod( 'instagram_url', '#' );
+$youtube       = get_theme_mod( 'youtube_url', '#' );
+$spotify       = get_theme_mod( 'spotify_url', '#' );
+$email         = get_theme_mod( 'contact_email', '' );
+?>
+
+<!-- ===== HERO ===== -->
+<section class="hero-section" id="home">
+    <div class="hero-bg"></div>
+    <div class="hero-particles" id="particles"></div>
+
+    <div class="hero-content">
+        <p class="hero-subtitle"><?php echo esc_html( $hero_subtitle ); ?></p>
+        <h1 class="hero-title glitch" data-text="MARPOGI">
+            <span class="outline">MAR</span><span class="accent">POGI</span>
+        </h1>
+        <p class="hero-tagline"><?php echo esc_html( $hero_tagline ); ?></p>
+        <div class="hero-cta">
+            <a href="#music" class="btn btn-primary">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg>
+                Listen Now
+            </a>
+            <a href="#about" class="btn btn-outline">Learn More</a>
+        </div>
+    </div>
+
+    <div class="scroll-indicator">
+        <span>Scroll</span>
+        <div class="arrow"></div>
+    </div>
+</section>
+
+<!-- ===== MUSIC ===== -->
+<section class="section music-section" id="music">
+    <div class="section-container">
+        <div class="section-header fade-in">
+            <span class="section-label">Now Playing</span>
+            <h2 class="section-title">My Music</h2>
+            <div class="eq-bars">
+                <div class="eq-bar"></div>
+                <div class="eq-bar"></div>
+                <div class="eq-bar"></div>
+                <div class="eq-bar"></div>
+                <div class="eq-bar"></div>
+            </div>
+            <div class="section-line"></div>
+        </div>
+
+        <div class="soundcloud-wrapper fade-in">
+            <iframe width="100%" height="300" scrolling="no" frameborder="no" allow="autoplay; encrypted-media" src="https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/playlists/soundcloud%253Aplaylists%253A2252326706&color=%2300b9f0&auto_play=true&hide_related=false&show_comments=false&show_user=false&show_reposts=false&show_teaser=false&visual=true"></iframe>
+            <div style="font-size: 10px; color: #cccccc;line-break: anywhere;word-break: normal;overflow: hidden;white-space: nowrap;text-overflow: ellipsis; font-family: Interstate,Lucida Grande,Lucida Sans Unicode,Lucida Sans,Garuda,Verdana,Tahoma,sans-serif;font-weight: 100; padding: 8px 12px; background: #111;">
+                <a href="https://soundcloud.com/marpogi23" title="Marpogi" target="_blank" style="color: #cccccc; text-decoration: none;">Marpogi</a> &middot;
+                <a href="https://soundcloud.com/marpogi23/sets/i-luv-u" title="I Luv U" target="_blank" style="color: #cccccc; text-decoration: none;">I Luv U</a>
+            </div>
+        </div>
+
+        <div class="music-info fade-in">
+            <p>Hit play and vibe out to the latest tracks. From hard-hitting bars to smooth melodies &mdash; this is where the sound lives.</p>
+        </div>
+
+        <div class="music-stats fade-in">
+            <div class="stat-item">
+                <span class="stat-number" data-count="100">0</span>
+                <span class="stat-label">Tracks</span>
+            </div>
+            <div class="stat-item">
+                <span class="stat-number" data-count="50">0</span>
+                <span class="stat-label">Releases</span>
+            </div>
+            <div class="stat-item">
+                <span class="stat-number" data-count="10">0</span>
+                <span class="stat-label">Collabs</span>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- ===== ABOUT ===== -->
+<section class="section about-section" id="about">
+    <div class="section-container">
+        <div class="section-header fade-in">
+            <span class="section-label">Who I Am</span>
+            <h2 class="section-title">About Me</h2>
+            <div class="section-line"></div>
+        </div>
+
+        <div class="about-grid">
+            <div class="about-image-wrapper fade-in">
+                <div class="about-image">
+                    <img src="<?php echo esc_url( get_template_directory_uri() . '/assets/img/about-photo.jpg' ); ?>" alt="Marpogi">
+                </div>
+                <div class="about-image-frame"></div>
+            </div>
+
+            <div class="about-text fade-in">
+                <h3>I'm <span>Marpogi</span></h3>
+                <p><?php echo wp_kses_post( $about_text ); ?></p>
+                <p>Let's just say, there's someone out there with a crown who's close to my heart, but we have to keep things on the low. Music is our secret language when we can't be together. Every track is a message, a piece of our story. Listen closely, and you might catch a glimpse of the love and secrets hidden in every beat.</p>
+
+                <div class="about-tags">
+                    <span class="tag">Hip-Hop</span>
+                    <span class="tag">Rap</span>
+                    <span class="tag">Trap</span>
+                    <span class="tag">R&amp;B</span>
+                    <span class="tag">Songwriter</span>
+                    <span class="tag">Producer</span>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- ===== VISUALS ===== -->
+<section class="section visuals-section" id="visuals">
+    <div class="section-container">
+        <div class="section-header fade-in">
+            <span class="section-label">Gallery</span>
+            <h2 class="section-title">Visuals</h2>
+            <div class="section-line"></div>
+        </div>
+
+        <div class="visuals-grid fade-in">
+            <div class="visual-card">
+                <span class="card-icon">&#127908;</span>
+                <div class="card-overlay">
+                    <h4>Studio Sessions</h4>
+                    <p>Behind the scenes</p>
+                </div>
+            </div>
+            <div class="visual-card">
+                <span class="card-icon">&#127926;</span>
+                <div class="card-overlay">
+                    <h4>Live Performance</h4>
+                    <p>On stage energy</p>
+                </div>
+            </div>
+            <div class="visual-card">
+                <span class="card-icon">&#127911;</span>
+                <div class="card-overlay">
+                    <h4>Music Videos</h4>
+                    <p>Visual storytelling</p>
+                </div>
+            </div>
+            <div class="visual-card">
+                <span class="card-icon">&#128187;</span>
+                <div class="card-overlay">
+                    <h4>Production</h4>
+                    <p>Making the beats</p>
+                </div>
+            </div>
+            <div class="visual-card">
+                <span class="card-icon">&#127775;</span>
+                <div class="card-overlay">
+                    <h4>Collaborations</h4>
+                    <p>Featuring artists</p>
+                </div>
+            </div>
+            <div class="visual-card">
+                <span class="card-icon">&#128293;</span>
+                <div class="card-overlay">
+                    <h4>Upcoming</h4>
+                    <p>What's next</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- ===== CONTACT ===== -->
+<section class="section contact-section" id="contact">
+    <div class="section-container">
+        <div class="section-header fade-in">
+            <span class="section-label">Get In Touch</span>
+            <h2 class="section-title">Connect</h2>
+            <div class="section-line"></div>
+        </div>
+
+        <div class="contact-content fade-in">
+            <p>For bookings, features, collaborations, or just to say what&rsquo;s up &mdash; hit me up on any platform below.</p>
+
+            <div class="social-links">
+                <?php if ( $soundcloud && '#' !== $soundcloud ) : ?>
+                <a href="<?php echo esc_url( $soundcloud ); ?>" class="social-link" target="_blank" rel="noopener">
+                    <svg viewBox="0 0 24 24"><path d="M1 18V11c0-.6.4-1 1-1s1 .4 1 1v7c0 .6-.4 1-1 1s-1-.4-1-1zm4 0V8c0-.6.4-1 1-1s1 .4 1 1v10c0 .6-.4 1-1 1s-1-.4-1-1zm4 0V6c0-.6.4-1 1-1s1 .4 1 1v12c0 .6-.4 1-1 1s-1-.4-1-1zm4 0V9c0-.6.4-1 1-1s1 .4 1 1v9c0 .6-.4 1-1 1s-1-.4-1-1zm7-9c-.4 0-.7.1-1 .2C18.6 6.8 16.5 5 14 5c-.6 0-1 .4-1 1v12c0 .6.4 1 1 1h6c1.7 0 3-1.3 3-3v-3c0-1.7-1.3-3-3-3z"/></svg>
+                    SoundCloud
+                </a>
+                <?php endif; ?>
+
+                <?php if ( $instagram && '#' !== $instagram ) : ?>
+                <a href="<?php echo esc_url( $instagram ); ?>" class="social-link" target="_blank" rel="noopener">
+                    <svg viewBox="0 0 24 24"><path d="M12 2.2c3.2 0 3.6 0 4.9.1 1.2.1 1.8.2 2.2.4.6.2 1 .5 1.4.9.4.4.7.8.9 1.4.2.4.4 1.1.4 2.2.1 1.3.1 1.6.1 4.8s0 3.6-.1 4.9c-.1 1.2-.2 1.8-.4 2.2-.2.6-.5 1-.9 1.4-.4.4-.8.7-1.4.9-.4.2-1.1.4-2.2.4-1.3.1-1.6.1-4.9.1s-3.6 0-4.9-.1c-1.2-.1-1.8-.2-2.2-.4-.6-.2-1-.5-1.4-.9-.4-.4-.7-.8-.9-1.4-.2-.4-.4-1.1-.4-2.2C2.2 15.6 2.2 15.2 2.2 12s0-3.6.1-4.9c.1-1.2.2-1.8.4-2.2.2-.6.5-1 .9-1.4.4-.4.8-.7 1.4-.9.4-.2 1.1-.4 2.2-.4C8.4 2.2 8.8 2.2 12 2.2zM12 0C8.7 0 8.3 0 7.1.1 5.8.1 4.9.3 4.1.6c-.8.3-1.5.7-2.2 1.4C1.2 2.6.8 3.3.6 4.1.3 4.9.1 5.8.1 7.1 0 8.3 0 8.7 0 12s0 3.7.1 4.9c.1 1.3.2 2.2.6 2.9.3.8.7 1.5 1.4 2.2.7.7 1.4 1.1 2.2 1.4.8.3 1.6.5 2.9.6C8.3 24 8.7 24 12 24s3.7 0 4.9-.1c1.3-.1 2.2-.2 2.9-.6.8-.3 1.5-.7 2.2-1.4.7-.7 1.1-1.4 1.4-2.2.3-.8.5-1.6.6-2.9.1-1.2.1-1.6.1-4.9s0-3.7-.1-4.9c-.1-1.3-.2-2.2-.6-2.9-.3-.8-.7-1.5-1.4-2.2-.7-.7-1.4-1.1-2.2-1.4C19.1.3 18.2.1 16.9.1 15.7 0 15.3 0 12 0zm0 5.8a6.2 6.2 0 100 12.4 6.2 6.2 0 000-12.4zM12 16a4 4 0 110-8 4 4 0 010 8zm6.4-11.8a1.4 1.4 0 100 2.8 1.4 1.4 0 000-2.8z"/></svg>
+                    Instagram
+                </a>
+                <?php endif; ?>
+
+                <?php if ( $youtube && '#' !== $youtube ) : ?>
+                <a href="<?php echo esc_url( $youtube ); ?>" class="social-link" target="_blank" rel="noopener">
+                    <svg viewBox="0 0 24 24"><path d="M23.5 6.2s-.2-1.6-.9-2.3c-.9-.9-1.8-.9-2.3-1C17 2.6 12 2.6 12 2.6s-5 0-8.3.3c-.5.1-1.4.1-2.3 1-.7.7-.9 2.3-.9 2.3S.2 8.1.2 10v1.8c0 1.9.3 3.8.3 3.8s.2 1.6.9 2.3c.9.9 2 .9 2.5 1 1.8.2 7.1.2 7.1.2s5 0 8.3-.3c.5-.1 1.4-.1 2.3-1 .7-.7.9-2.3.9-2.3s.3-1.9.3-3.8V10c0-1.9-.3-3.8-.3-3.8zM9.6 15.6V8l6.2 3.8-6.2 3.8z"/></svg>
+                    YouTube
+                </a>
+                <?php endif; ?>
+
+                <?php if ( $spotify && '#' !== $spotify ) : ?>
+                <a href="<?php echo esc_url( $spotify ); ?>" class="social-link" target="_blank" rel="noopener">
+                    <svg viewBox="0 0 24 24"><path d="M12 0C5.4 0 0 5.4 0 12s5.4 12 12 12 12-5.4 12-12S18.6 0 12 0zm5.5 17.3c-.2.3-.6.4-1 .2-2.7-1.6-6-2-10-1.1-.4.1-.8-.1-.9-.5-.1-.4.1-.8.5-.9 4.3-1 8.1-.6 11.1 1.2.4.2.5.7.3 1.1zm1.5-3.3c-.3.4-.8.6-1.2.3-3.1-1.9-7.7-2.4-11.3-1.3-.5.1-1-.1-1.1-.6-.1-.5.1-1 .6-1.1 4.1-1.3 9.2-.7 12.7 1.5.4.2.5.8.3 1.2zm.1-3.4c-3.7-2.2-9.8-2.4-13.3-1.3-.5.2-1.1-.1-1.3-.6-.2-.5.1-1.1.6-1.3 4.1-1.2 10.8-1 15 1.5.5.3.6.9.4 1.4-.3.5-.9.6-1.4.3z"/></svg>
+                    Spotify
+                </a>
+                <?php endif; ?>
+            </div>
+
+            <?php if ( $email ) : ?>
+            <div class="contact-email">
+                <a href="mailto:<?php echo esc_attr( $email ); ?>"><?php echo esc_html( $email ); ?></a>
+            </div>
+            <?php endif; ?>
+        </div>
+    </div>
+</section>
+
+<?php get_footer(); ?>
