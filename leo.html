@@ -1,0 +1,219 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Leomar & Leonor | Our Love Story</title>
+    <style>
+        :root {
+            --primary: #8d5c62;
+            --accent: #d4a373;
+            --bg: #fdfae0;
+            --text: #4a3728;
+            --soft: #e9edc9;
+            --gold: #b08968;
+        }
+ 
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+ 
+        body {
+            font-family: 'Georgia', serif;
+            background-color: var(--bg);
+            color: var(--text);
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+ 
+        /* Decorative background elements */
+        body::before {
+            content: "";
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: radial-gradient(circle at 50% 50%, rgba(255,255,255,0.3) 0%, transparent 70%);
+            z-index: -1;
+        }
+ 
+        header {
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            background: linear-gradient(rgba(0,0,0,0.1), rgba(0,0,0,0.1)), 
+                        url('https://images.unsplash.com/photo-1519741497674-711481863552?auto=format&fit=crop&q=80&w=2000');
+            background-size: cover;
+            background-position: center;
+            color: white;
+            padding: 20px;
+        }
+ 
+        header h1 {
+            font-size: 4rem;
+            margin-bottom: 10px;
+            text-shadow: 2px 2px 10px rgba(0,0,0,0.5);
+            font-style: italic;
+        }
+ 
+        header p {
+            font-size: 1.5rem;
+            letter-spacing: 2px;
+            text-shadow: 1px 1px 5px rgba(0,0,0,0.5);
+        }
+ 
+        .heart {
+            color: #e63946;
+            font-size: 2rem;
+            animation: pulse 1.5s infinite;
+        }
+ 
+        @keyframes pulse {
+            0% { transform: scale(1); }
+            50% { transform: scale(1.2); }
+            100% { transform: scale(1); }
+        }
+ 
+        .container {
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 60px 20px;
+        }
+ 
+        section {
+            margin-bottom: 80px;
+            text-align: center;
+        }
+ 
+        h2 {
+            font-size: 2.5rem;
+            color: var(--primary);
+            margin-bottom: 30px;
+            position: relative;
+            display: inline-block;
+        }
+ 
+        h2::after {
+            content: "";
+            position: absolute;
+            width: 50%;
+            height: 2px;
+            background: var(--accent);
+            bottom: -10px;
+            left: 25%;
+            border-radius: 2px;
+        }
+ 
+        .about-card {
+            background: rgba(255, 255, 255, 0.5);
+            padding: 40px;
+            border-radius: 20px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.05);
+            border: 1px solid var(--soft);
+            backdrop-filter: blur(5px);
+        }
+ 
+        .about-text p {
+            font-size: 1.2rem;
+            margin-bottom: 20px;
+        }
+ 
+        .posts-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 30px;
+        }
+ 
+        .post-card {
+            background: white;
+            padding: 30px;
+            border-radius: 15px;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            border-bottom: 4px solid var(--accent);
+            text-align: left;
+        }
+ 
+        .post-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 35px rgba(0,0,0,0.1);
+        }
+ 
+        .post-card h3 {
+            color: var(--primary);
+            margin-bottom: 15px;
+        }
+ 
+        .post-date {
+            font-size: 0.8rem;
+            color: var(--gold);
+            margin-bottom: 15px;
+            display: block;
+        }
+ 
+        footer {
+            text-align: center;
+            padding: 40px;
+            background: var(--primary);
+            color: white;
+            margin-top: 50px;
+        }
+ 
+        @media (max-width: 600px) {
+            header h1 { font-size: 2.5rem; }
+            header p { font-size: 1.1rem; }
+        }
+    </style>
+</head>
+<body>
+ 
+    <header>
+        <h1>Leomar & Leonor</h1>
+        <p>A Journey Written in Stars</p>
+        <div class="heart">❤</div>
+    </header>
+ 
+    <div class="container">
+        <section id="about">
+            <h2>Our Story</h2>
+            <div class="about-card">
+                <div class="about-text">
+                    <p>It began with a simple smile and a conversation that lasted for hours. What started as a chance encounter blossomed into a lifetime of shared dreams, laughter, and unwavering support.</p>
+                    <p>This space is our little corner of the world where we document the quiet moments, the grand adventures, and the beautiful chaos of life as we build our future together.</p>
+                </div>
+            </div>
+        </section>
+ 
+        <section id="posts">
+            <h2>Recent Memories</h2>
+            <div class="posts-grid">
+                <article class="post-card">
+                    <span class="post-date">June 14, 2026</span>
+                    <h3>The Golden Hour</h3>
+                    <p>Reflecting on that perfect evening by the lake where the air turned warm and everything felt just right. Read more...</p>
+                </article>
+                <article class="post-card">
+                    <span class="post-date">May 28, 2026</span>
+                    <h3>First Autumn Adventure</h3>
+                    <p>Exploring the cobblestone streets of the city and finding hidden cafes that felt like our own secret.</p>
+                </article>
+                <article class="post-card">
+                    <span class="post-date">May 12, 2026</span>
+                    <h3>A Promise Kept</h3>
+                    <p>On the importance of small gestures and how they build the foundation of our love every single day.</p>
+                </article>
+            </div>
+        </section>
+    </div>
+ 
+    <footer>
+        <p>&copy; 2026 Leomar & Leonor. Crafted with love.</p>
+    </footer>
+ 
+</body>
+</html>
