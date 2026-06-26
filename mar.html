@@ -1,0 +1,234 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Merit, Might, and Majesty | The Sovereign Ranger Bond</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Cinzel:wght@400;700&family=Montserrat:wght@300;400;600&family=Playfair+Display:ital,wght@0,400;0,700;1,400&display=swap');
+ 
+        :root {
+            --gold: #d4af37;
+            --dark-gold: #996515;
+            --lavender: #967bb6;
+            --deep-charcoal: #1a1a1a;
+            --off-white: #f4f4f4;
+            --accent-red: #8b0000;
+        }
+ 
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+ 
+        body {
+            font-family: 'Montserrat', sans-serif;
+            background-color: var(--deep-charcoal);
+            color: var(--off-white);
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+ 
+        h1, h2, h3, .brand {
+            font-family: 'Cinzel', serif;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+        }
+ 
+        .serif {
+            font-family: 'Playfair Display', serif;
+            font-style: italic;
+        }
+ 
+        /* Hero Section */
+        header {
+            height: 100vh;
+            background: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.6)), 
+                        url('https://images.unsplash.com/photo-1507525428034-b723cf961d3e?auto=format&fit=crop&q=80&w=2000'); /* Fallback coastal image */
+            background-size: cover;
+            background-position: center;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            padding: 20px;
+            border-bottom: 4px solid var(--gold);
+        }
+ 
+        .hero-title {
+            font-size: clamp(2.5rem, 8vw, 5rem);
+            color: var(--gold);
+            margin-bottom: 10px;
+            text-shadow: 2px 2px 10px rgba(0,0,0,0.8);
+        }
+ 
+        .hero-slogan {
+            font-size: clamp(1.2rem, 3vw, 2rem);
+            max-width: 800px;
+            margin-bottom: 30px;
+            color: var(--lavender);
+        }
+ 
+        .hero-sub {
+            font-size: 1.1rem;
+            max-width: 600px;
+            border-top: 1px solid var(--gold);
+            padding-top: 20px;
+            font-weight: 300;
+        }
+ 
+        /* Section Styling */
+        section {
+            padding: 100px 10%;
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+ 
+        .section-title {
+            text-align: center;
+            font-size: 2.5rem;
+            color: var(--gold);
+            margin-bottom: 50px;
+            position: relative;
+        }
+ 
+        .section-title::after {
+            content: '';
+            display: block;
+            width: 80px;
+            height: 3px;
+            background: var(--lavender);
+            margin: 15px auto;
+        }
+ 
+        /* Grid Layouts */
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 40px;
+        }
+ 
+        .card {
+            background: rgba(255,255,255,0.05);
+            padding: 30px;
+            border-left: 3px solid var(--gold);
+            transition: transform 0.3s ease;
+        }
+ 
+        .card:hover {
+            transform: translateY(-10px);
+            background: rgba(255,255,255,0.08);
+        }
+ 
+        .card h3 {
+            color: var(--gold);
+            margin-bottom: 15px;
+        }
+ 
+        /* Military Section specific */
+        .incident-box {
+            background: linear-gradient(145deg, #2c0000, #1a1a1a);
+            border: 1px solid var(--accent-red);
+            padding: 40px;
+            margin-top: 40px;
+        }
+ 
+        .medal-list {
+            display: flex;
+            gap: 20px;
+            flex-wrap: wrap;
+            margin-top: 20px;
+        }
+ 
+        .medal {
+            border: 1px solid var(--gold);
+            padding: 5px 15px;
+            font-size: 0.9rem;
+            color: var(--gold);
+        }
+ 
+        /* Digital Moat Section */
+        .digital-moat {
+            background: #0d0d0d;
+            border: 1px solid var(--lavender);
+            padding: 40px;
+        }
+ 
+        .code-text {
+            font-family: 'Courier New', Courier, monospace;
+            color: #00ffcc;
+            background: #000;
+            padding: 20px;
+            border-radius: 5px;
+            margin-top: 20px;
+        }
+ 
+        /* Gallery */
+        .gallery {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+        }
+ 
+        .gallery-item {
+            position: relative;
+            height: 300px;
+            overflow: hidden;
+            background: #222;
+        }
+ 
+        .gallery-item img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            opacity: 0.7;
+            transition: opacity 0.5s ease;
+        }
+ 
+        .gallery-item:hover img {
+            opacity: 1;
+        }
+ 
+        .gallery-caption {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 100%;
+            background: rgba(0,0,0,0.8);
+            padding: 15px;
+            font-size: 0.9rem;
+        }
+ 
+        footer {
+            text-align: center;
+            padding: 50px;
+            background: #000;
+            border-top: 1px solid #333;
+        }
+ 
+        .highlight {
+            color: var(--gold);
+            font-weight: bold;
+        }
+ 
+        @media (max-width: 768px) {
+            section { padding: 50px 5%; }
+            .hero-title { font-size: 3rem; }
+        }
+    </style>
+</head>
+<body>
+ 
+    <header>
+        <h1 class="hero-title">Merit, Might, and Majesty</h1>
+        <p class="hero-slogan serif">"A Digital Moat and a Sovereign Heart"</p>
+        <p class="hero-sub">A fusion of a battle-hardened Ranger and a sovereign heir.</p>
+    </header>
+ 
+    <!-- Intro -->
+    <section>
+        <h2 class="section-title">First Meeting on a California Tarmac</h2>
+        <div style="max-width: 800px; margin: 0 auto; text-align: center; font-size: 1.2rem;">
+            <p>It began not in a ball ball, but under the heat of the California sun. Amidst the rugged tarmac of Tatunay’
